@@ -65,9 +65,14 @@ class TodoResponse(BaseModel):
 
 app = FastAPI(title="Todo API")
 
+origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "https://todo-application-sable-nine.vercel.app/",
+]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
