@@ -13,6 +13,20 @@ from sqlalchemy.orm import (
     sessionmaker,
 )
 
+app = FastAPI(title="Todo API")
+
+origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "https://todo-application-sable-nine.vercel.app/",
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # Read database configuration from .env
 load_dotenv()
 
@@ -63,20 +77,7 @@ class TodoResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
 
-app = FastAPI(title="Todo API")
 
-origins = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-    "https://todo-application-sable-nine.vercel.app/",
-]
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 
 # Provide a database session for each request
