@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+backend/.venv/
+
+# Environment secrets
+.env
+.env.*
+
+# Allow example configuration
+!.env.example
+
+# React
+frontend/node_modules/
+frontend/dist/
+
+# IDE
+.idea/
+
+# Logs
+*.log
